@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+	<related>
+		<root name="Simba" content="Assist" location="path">
+			<item name="simba1" path="cntent" id="id_1">
+				<label name="Content_simba"></label>
+				<description name="description"></description>
+				<text required="t" maxlength="30"></text>
+			</item>
+			<item name="simba2" path="content" id="id_2">
+				<label name="content_LionKing"></label>
+				<description name="description1"></description>
+				<textarea required="t" maxlength="32"></textarea>
+			</item>
+		</root>
+	</related>
+</data>

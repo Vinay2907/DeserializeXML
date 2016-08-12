@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XML to Json Converter</title>
+</head>
+<body data-ng-app="xmlJsonApp" data-ng-controller="xmlController">
+
+	<div id="sample">
+	
+	<div>
+	<div ng-repeat="(key, range) in fields">
+        <div ng-switch="getTypeOf(range)">
+        	<div ng-switch-when="string"></div>
+            <div ng-switch-when="object"></div>
+            <div ng-switch-when="number"></div>
+            <div ng-switch-when="array">
+            	<div ng-repeat="(key,value) in range">
+		<!-- {{key}} -- {{value.text}} -->
+      <div ng-if="value">
+        <div ng-if="value.text">
+          <h5>Text field</h5>
+          <hr/>
+          <!-- code to render an input field block -->
+          <input id="{{ field.id }}" type="text" class="form-control" ng-model="field.value" placeholder="{{ field.placeholder }}" />
+        </div>
+        <div ng-if="label">
+          <h5>Text field</h5>
+          <hr/>
+          <!-- code to render an input field block -->
+          <input id="{{ field.id }}" type="text" class="form-control" ng-model="field.value" placeholder="{{ field.placeholder }}" />
+        </div>
+        <div ng-if="radio">
+          <h5>Radio field</h5>
+          <hr/>
+          <!-- code to render a radio block -->
+          <div ng-repeat="choice in field.choices">
+            <input name="single-{{ field.id }}" type="radio" id="single-{{ choice.id }}" data-ng-model="choice.selected" data-ng-value="true" ng-change='updateRadioChoices(field, choice)' />
+            <label for="single-{{ choice.id }}">{{ choice.name }}</label>
+          </div>
+        </div>
+        <div ng-if="value.textarea">
+        	hello
+          <h5>Checkbox field</h5>
+          <hr/>
+          <!-- code to render a checkbox block -->
+          <div ng-repeat="choice in field.choices">
+            <label for="multiple-{{ choice.id }}">
+              <input type="checkbox" ng-model="choice.selected" ng-value="choice.id" name="multiple-{{field.id}}" id="multiple-{{ choice.id }}" />{{ choice.name }}</label>
+          </div>
+        </div>
+        <!-- FALLBACK -->
+        <div ng-if>Error. Invalid HTML element type.</div>
+      </div>
+    </div>
+            </div>
+            <div ng-switch-when="null">It's null</div>
+            <div ng-switch-when="undefined">It's undefined</div>
+            <div ng-switch-default>It's something else</div>
+        </div>
+    </div>
+    </div>
+		
+    <h4>Fields - output</h4>
+    <hr/>
+    {{fields}}
+		
+	</div>
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/xml2json.min.js"></script>
+	<script type="text/javascript" src="scripts/userDefined/xmlToJsonApp.js"></script>
+</body>
+</html>
